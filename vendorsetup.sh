@@ -1,4 +1,4 @@
-# Use this to add HT16 to CM's lunch command menu
+# Use this to add NF2 to CM's lunch command menu
 for var in eng user userdebug; do
-  add_lunch_combo lineage_HT16-$var
+  add_lunch_combo lineage_nf2-$var
 done

@@ -1,3 +1,6 @@
+#
+LOCAL_PATH := device/walton/nf2
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
@@ -9,7 +12,7 @@ ro.adb.secure=0 \
 persist.service.acm.enable=0 \
 ro.mount.fs=EXT4 \
 debug.hwui.render_dirty_regions=false \
-ro.sf.lcd_density=320 \
+ro.sf.lcd_density=280 \
 persist.radio.multisim.config=dsds \
 ro.mtk_lte_support=1 \
 ro.telephony.ril_class=MT6580 \
@@ -25,12 +28,11 @@ persist.sys.display.clearMotion=0
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/Homtom/HT16/HT16-vendor.mk)
+$(call inherit-product-if-exists, vendor/walton/nf2/nf2-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/Homtom/HT16/overlay
-PRODUCT_PACKAGE_OVERLAYS += device/Homtom/HT16/overlay # enable this to be able overlay a default wallpaper
+DEVICE_PACKAGE_OVERLAYS += ${LOCAL_PATH}/overlay
+PRODUCT_PACKAGE_OVERLAYS += ${LOCAL_PATH}/overlay # enable this to be able overlay a default wallpaper
 
-LOCAL_PATH := device/Homtom/HT16
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
@@ -148,8 +150,8 @@ PRODUCT_PACKAGES += \
     mrdump_tool
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_HT16
-PRODUCT_DEVICE := HT16
+PRODUCT_NAME := full_nf2
+PRODUCT_DEVICE := nf2
 
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
